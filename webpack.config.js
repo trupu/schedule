@@ -1,6 +1,7 @@
 const {resolve, join} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {};
 
@@ -27,11 +28,22 @@ config.module = {
                 fallback: 'style-loader',
                 use: ['css-loader','sass-loader']
             })
+        },
+        {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
         }
     ]
 }
 
 config.plugins = [
+    new CleanWebpackPlugin(),
     new ExtractTextPlugin('main.css'),
     new HtmlWebpackPlugin({
         template: './src/index.html',
