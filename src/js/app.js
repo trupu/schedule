@@ -1,5 +1,4 @@
 import '../css/app.scss';
-import drupal from './second';
+import table from './mixins/tableGenerator';
 
-console.log(drupal);
-console.log('app.js');
+table();
