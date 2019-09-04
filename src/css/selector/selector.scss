@@ -1,0 +1,143 @@
+@keyframes boxAnim{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(2, 6);
+    }
+}
+
+@keyframes showListItems{
+    0%{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100%{
+        opaticy: 1;
+        transform: translateX(0);
+    }
+}
+
+.selector-wrapper{
+    display: flex;
+    flex-flow: column;
+
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    .select-label{
+        color: darken($text-color, 10%);
+        margin-bottom: 15px;
+    }
+
+    .cs-select{
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: center;
+
+        user-select: none;
+        width: 200px;
+        height: 50px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid darken($text-color, 10%);
+        text-align: center;
+        font-size: 1.5em;
+        color: darken($text-color, 15%);
+        position: relative;
+        transition: color .3s ease-in-out, transform .5s ease-in-out;
+
+        &::before{
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background-color: darken($text-color, 25%);
+            transition: all .3s ease-in-out;
+        }
+
+        &:hover{
+            cursor: pointer;
+            color: darken($text-color, 25%);
+
+            &::before{
+                width: 100%;
+            }
+        }
+
+        .selector-title{
+
+        }
+
+        .selector-list{
+            display: none;
+            height: 300px;
+            max-height: 300px;
+            min-width: 400px;
+            overflow: hidden;
+        }
+    }
+
+    .cs-active{
+        position: relative;
+        
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: darken($text-color, 25%);
+            border-radius: 3px;
+            box-shadow: 0 0 5px #000;
+
+            animation: boxAnim .5s ease-in-out forwards;
+        }
+
+        .selector-list{
+            display: flex;
+            flex-flow: column;
+            list-style-type: none;
+            width: 400px;
+            height: 300px;
+            color: #fff;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding: 20px 0;
+            position: relative;
+
+            .hidden-scroll{
+                width: 100%;
+                overflow: auto;
+                overflow-x: hidden;
+                margin:15px -10px 15px 15px;
+                padding-right:10px;
+
+                
+                li{
+                    animation: showListItems .5s ease-in-out both;
+                    color: rgb(218, 147, 17);
+                    transition: all .3s ease-in-out;
+
+                    &:hover{
+                        color: lighten(rgb(218, 147, 17), 10%);
+                        background-color: darken($text-color, 30%);
+                    }
+                }
+    
+                @for $i from 1 through 20 {
+                    li:nth-child(#{$i}){
+                        animation-delay: .5s+($i*0.05);
+                    }
+                }
+            }
+        }
+    }
+}

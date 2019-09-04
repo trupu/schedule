@@ -1,5 +1,6 @@
-@import './header.scss';
-@import './table.scss';
+@import './header/header.scss';
+@import './selector/selector.scss';
+@import './table/table.scss';
 
 *{
     box-sizing: border-box;

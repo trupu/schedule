@@ -1,6 +1,8 @@
 import fileTransformation from './fileTransformation';
 import librus from '../data/librusData';
 
+// Generating blank table
+
 const generatingTable = async () => {
     const xmlDOM = await fileTransformation();
 
