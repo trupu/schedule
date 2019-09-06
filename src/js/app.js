@@ -1,6 +1,9 @@
 import '../css/app.scss';
+import fileTransformation from './mixins/file/fileTransformation';
 import Selector from './mixins/selector/selector';
-import table from './mixins/tableGenerator';
+import tableGenerator from './mixins/table/tableGenerator';
+import tableMerging from './mixins/table/tableMerging';
+import eventHandler from './mixins/header/eventHandler';
 
 const selector = document.querySelector('.cs-select');
 const shadowBox = document.querySelector('.selector-shadow-box');
@@ -15,5 +18,18 @@ window.onkeydown = function( event ) {
     }
 };
 
+const app = async () => {
+    const xmlDOM = await fileTransformation();
+    tableGenerator(xmlDOM);
+    // tableMerging();
+    eventHandler.headerEvent(xmlDOM);
 
-table();
+    const header = document.querySelectorAll('.header_option');
+        header.forEach(el => {
+            el.addEventListener('click', function() {
+                eventHandler.headerEvent(xmlDOM);
+            });
+        });
+}
+
+app();

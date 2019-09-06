@@ -1,4 +1,4 @@
-import address from '../config/address';
+import address from '../../config/address';
 
 const loader = (filename) => {
     return new Promise(async (resolve, reject) => {

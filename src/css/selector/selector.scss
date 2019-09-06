@@ -78,7 +78,7 @@
         user-select: none;
         width: 200px;
         height: 50px;
-        background-color: rgba(0,0,0,.95);
+        background-color: rgba(0,0,0,.9);
         border: none;
         border: 2px solid darken($text-color, 20%);
         text-align: center;
@@ -108,6 +108,7 @@
         }
 
         &:hover{
+            background-color: rgba(0,0,0,.8);
             cursor: pointer;
             color: #FFA20A;
 
@@ -221,7 +222,8 @@
                     animation: showListItems .5s ease-in-out both;
                     color: rgb(218, 147, 17);
                     transition: all .3s ease-in-out;
-                    font-size: .8em;
+                    font-size: .6em;
+                    line-height: 1.5;
 
                     &:hover{
                         color: lighten(rgb(218, 147, 17), 20%);
@@ -229,7 +231,7 @@
                     }
                 }
     
-                @for $i from 1 through 20 {
+                @for $i from 1 through 30 {
                     li:nth-child(#{$i}){
                         animation-delay: .5s+($i*0.05);
                     }
