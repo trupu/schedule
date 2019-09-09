@@ -37,6 +37,11 @@ $light-text-color: #FFDCA8;
             font-size: 1em;
         }
     }
+
+    .header_option-active{
+        transform: scale(1.1);
+        color: darken($text-color, 25%);
+    }
 }
 
 @media (min-width: 768px) {

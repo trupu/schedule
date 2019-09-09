@@ -1,3 +1,4 @@
+import Selector from '../selector/selector';
 import contentLoader from '../table/tableContent';
 import librus from '../../data/librusData';
 
@@ -5,10 +6,16 @@ import librus from '../../data/librusData';
 
 const headerEvent = (xmlDOM) => {
     let name;
+    const active = document.querySelector('.header_option-active');
+    if (active) active.classList.remove('header_option-active');
+
     if (event.target instanceof HTMLElement) {
         const ev = event.target.closest('.header_option');
+        ev.classList.add('header_option-active');
         name = ev.attributes['data-name'].value;
     } else {
+        const ev = document.querySelector('.header_option');
+        ev.classList.add('header_option-active');
         name = document.querySelector('.header_option').attributes['data-name'].value;
     }
     const list = document.querySelector('.hidden-scroll');
@@ -25,6 +32,7 @@ const headerEvent = (xmlDOM) => {
         li.classList.add('list-item');
         li.addEventListener('click', function() {
             selectorEvent(xmlDOM, name, li.innerHTML);
+            Selector.hideSelector();
         });
         list.appendChild(li);
     });
