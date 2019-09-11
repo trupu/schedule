@@ -31,43 +31,60 @@
                 color: #000;
                 position: relative;
 
-                .flexbox-center{
-                    display: flex;
-                    flex-flow: column;
+                .flexbox-wrapper{
                     width: 100%;
                     height: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
                     position: absolute;
                     top: 0;
                     left: 0;
-                    font-size: 1em;
-                }
-                .flexbox-bottom{
-                    display: flex;
-                    align-items: space-between;
-                    justify-content: center;
-                    flex-flow: row;
-                    height: auto;
-                    width: 100%;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    font-size: .6em;
-                }
 
-                .flexbox-top{
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                    flex-flow: row;
-                    height: auto;
-                    width: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    font-size: .6em;
+                    .flexbox-center{
+                        display: flex;
+                        flex-flow: column;
+                        width: 100%;
+                        height: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        font-size: .9em;
+                    }
+                    .flexbox-bottom{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        flex-flow: row;
+                        height: auto;
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        font-size: .6em;
+
+                        .wrapper{
+                            width:100%;
+                            height: auto;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                    }
+    
+                    .flexbox-top{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        flex-flow: row;
+                        height: auto;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        font-size: .6em;
+                    }
                 }
             }
         }

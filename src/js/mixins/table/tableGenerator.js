@@ -4,30 +4,42 @@ import librus from '../../data/librusData';
 // EVERY SINGLE COLUMN IS GENERATED TWICE TO AVOID FUTURE ISSUES WITH MERGING!!!
 
 const generatingTable = (xmlDOM) => {
-
     const periods = xmlDOM.querySelector(librus.periods);
     const daysdefs = xmlDOM.querySelector(librus.daysdefs);
 
     const parent = document.querySelector('.table-wrapper');
 
     const table = document.createElement('table');
+    table.classList.add('main-table');
     for (let i = 0; i < (librus.days*2)+2; i++) {
         let tr = document.createElement('tr');
         tr.classList.add(`row${i+1}`);
+        if (i > 1) {
+            tr.classList.add('schedule-gen');
+        }
         for (let j = 0; j < (periods.children.length+1); j++) {
             let td = document.createElement('td');
             td.classList.add(`column${j+1}`);
+                if (j >= 0 && i > 1) {
+                    td.setAttribute('data-period', j);
+                }
+                if (j > 0 && i > 1) {
+                    td.classList.add('cell-gen');
+                }
             td.setAttribute('data-x', j+1);
             td.setAttribute('data-y', i+1);
             let flex = document.createElement('div');
-            flex.classList.add('flexbox-center');
-            let flex1 = document.createElement('div');
-            flex1.classList.add('flexbox-bottom');
-            let flex2 = document.createElement('div');
-            flex2.classList.add('flexbox-top');
+            flex.classList.add('flexbox-wrapper');
+            let flexChild = document.createElement('div');
+            flexChild.classList.add('flexbox-center');
+            let flexChild2 = document.createElement('div');
+            flexChild2.classList.add('flexbox-bottom');
+            let flexChild3 = document.createElement('div');
+            flexChild3.classList.add('flexbox-top');
+            flex.appendChild(flexChild);
+            flex.appendChild(flexChild2);
+            flex.appendChild(flexChild3);
             td.appendChild(flex);
-            td.appendChild(flex1);
-            td.appendChild(flex2);
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -41,9 +53,11 @@ const generatingTable = (xmlDOM) => {
     for (let i = 1; i < row1.children.length; i++) {
         if (periods.children[i-1]) {
             // flexbox-center
-            row1.children[i].children[0].innerHTML = periods.children[i-1].attributes['short'].value;
+            let d1 = row1.children[i].firstChild.children[0];
+            d1.innerHTML = periods.children[i-1].attributes['short'].value;
             // flexbox-bottom
-            row1.children[i].children[1].innerHTML = `${periods.children[i-1].attributes['starttime'].value}-${periods.children[i-1].attributes['endtime'].value}`;
+            let d2 = row1.children[i].firstChild.children[1];
+            d2.innerHTML = `${periods.children[i-1].attributes['starttime'].value}-${periods.children[i-1].attributes['endtime'].value}`;
         }
     }
 
@@ -54,7 +68,8 @@ const generatingTable = (xmlDOM) => {
     for(let i = 0; i < daysdefs.children.length; i++) {
         if (daysdefs.children[i] && daysdefs.children[i].attributes['short'].value !== 'X' && daysdefs.children[i].attributes['short'].value !== 'E') {
             // flexbox-center
-            column1[pom].children[0].innerHTML = daysdefs.children[i].attributes['short'].value;
+            column1[pom].firstChild.firstChild.innerHTML = daysdefs.children[i].attributes['short'].value;
+            column1[pom].firstChild.setAttribute('title', daysdefs.children[i].attributes['name'].value);
             pom = pom + 2;
         }
     }
