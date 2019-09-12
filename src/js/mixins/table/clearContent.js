@@ -21,8 +21,8 @@ const clearTableContent = () => {
             const divs = document.querySelectorAll('.cell-gen');
             const divsArray = Array.from(divs);
             divsArray.forEach(el => {
+                el.style.backgroundColor = '';
                 let wrapper = el.querySelector('.flexbox-wrapper');
-
                 if (wrapper && wrapper.children) {
                     let array = Array.from(wrapper.children);
                     array.map(flex => flex.innerHTML = '');

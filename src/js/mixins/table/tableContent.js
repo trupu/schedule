@@ -1,6 +1,7 @@
 import librus from '../../data/librusData';
 import Schedule from '../../data/lessonsObject';
 import tableMerging from './tableMerging';
+import colors from '../../data/classColors';
 
 // Creating a schedule object containing all target`s lessons
 const contentLoader = (xmlDOM, classid, id) => {
@@ -67,13 +68,9 @@ const beforeInserting = (schedule, classid) => {
                 let newCorrect = newTds.find(td => td.attributes['data-period'].value === lesson.period);
                 cellIndex = newTds.indexOf(newCorrect);
                 let content = newCorrect.querySelector('.flexbox-center');
-                // for (let i = 0; i < counter; i++) {
-                    validateTarget(classid, newTds[(cellIndex)], lesson);
-                // }
+                validateTarget(classid, newTds[(cellIndex)], lesson);
             } else {
-                // for (let i = 0; i < counter; i++) {
-                    validateTarget(classid, tds[(cellIndex)], lesson);
-                // }
+                validateTarget(classid, tds[(cellIndex)], lesson);
             }
         });
         rowCounter = rowCounter + 2;
@@ -86,6 +83,7 @@ const validateTarget = (classid, cell, data) => {
     let classroom = {};
     let teacher = {};
     let group = '';
+    let color = '';
 
     if (data.lesson.subject) {
         subject.short = data.lesson.subject.attributes['short'].value;
@@ -104,17 +102,27 @@ const validateTarget = (classid, cell, data) => {
     }
     if (data.lesson.teacher) {
         teacher.short = data.lesson.teacher.attributes['short'].value;
-        teacher.name = data.lesson.teacher.attributes['name'].value;
+        teacher.name = data.lesson.teacher.attributes['name'].value;  
     }
     
+    if (data.lesson.classIndex) {
+        if (colors[data.lesson.classIndex]) {
+            color = colors[data.lesson.classIndex];
+        }
+    }
+
+    if (data.lesson.teacherIndex) {
+        teacher.color = colors[data.lesson.teacherIndex];
+    }
+
     if (classid === librus.classid) {
-        insertContentIntoCell(cell, subject, classroom, teacher, group);
+        insertContentIntoCell(cell, subject, classroom, teacher, group, teacher.color);
     } else if (classid === librus.teacherid) {
-        insertContentIntoCell(cell, classObj, subject, classroom);
+        insertContentIntoCell(cell, classObj, subject, classroom, '', color);
     } else if (classid === librus.classroomid) {
-        insertContentIntoCell(cell, subject, classObj, teacher);
+        insertContentIntoCell(cell, subject, classObj, teacher, '', color);
     } else if (classid === librus.subjectid) {
-        insertContentIntoCell(cell, classObj, classroom, teacher, group);
+        insertContentIntoCell(cell, classObj, classroom, teacher, group, color);
     } else {
         console.log(`Nieprawidłowy format: '${classid}'!`);
     }
@@ -122,6 +130,14 @@ const validateTarget = (classid, cell, data) => {
 }
 // inserting content into single cell
 const insertContentIntoCell = (cell, center, bottomLeft, bottomRight, top, color) => {
+    // cell`s background
+    if (color) {
+        cell.style.backgroundColor = color;
+    } else {
+        let last = colors.length;
+        cell.style.backgroundColor = colors[(last-1)];
+    }
+
     // flexbox-center
     if (center) {
         const contentCenter = cell.querySelector('.flexbox-center');

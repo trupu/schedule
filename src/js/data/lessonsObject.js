@@ -54,12 +54,18 @@ const Schedule = {
         let subject = arraySubject.find(el => el.attributes['id'].value === data.attributes[librus.subjectid].value);
         let teacher = arrayTeacher.find(el => el.attributes['id'].value === data.attributes[librus.teacherid].value);
         let group = arrayGroup.find(el => el.attributes['id'].value === data.attributes[librus.groupid].value);
+
+        let classIndex = arrayClasses.indexOf(classObj);
+        let teacherIndex = arrayTeacher.indexOf(teacher);
+
         return {
             numberOfLessons,
             classObj,
             subject,
             teacher,
-            group
+            group,
+            classIndex,
+            teacherIndex
         };
     },
 
