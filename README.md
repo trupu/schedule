@@ -25,3 +25,7 @@ npm run serve
 npm run build
 
 It`s worth underlining that this poject is dependent on librus` functions which generate the xml file
+
+## Schedule is compatible with librus
+
+### 13.09.2019
