@@ -73,7 +73,10 @@ const beforeInserting = (schedule, classid) => {
         });
         rowCounter = rowCounter + 2;
     });
+    // row merging
     tableMerging.mergeRows();
+    // column merging
+    tableMerging.mergeColumns();
 };
 // checking target`s type
 const validateTarget = (classid, cell, data) => {
@@ -107,7 +110,6 @@ const validateTarget = (classid, cell, data) => {
     if (data.lesson.classIndex) {
         if (colors[data.lesson.classIndex]) {
             color = colors[data.lesson.classIndex];
-            console.log(color);
         }
     }
 
