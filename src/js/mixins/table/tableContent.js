@@ -26,8 +26,6 @@ const contentLoader = (xmlDOM, classid, id) => {
             });
         });
 
-        console.log(`cards: ${myCards.length}, lessons: ${lessons.length}`);
-
         myCards.forEach(card => {
             let period = card.attributes['period'].value;
             let classroom = card.attributes[librus.classroomid].value;
@@ -75,6 +73,7 @@ const beforeInserting = (schedule, classid) => {
         });
         rowCounter = rowCounter + 2;
     });
+    tableMerging.mergeRows();
 };
 // checking target`s type
 const validateTarget = (classid, cell, data) => {
@@ -108,6 +107,7 @@ const validateTarget = (classid, cell, data) => {
     if (data.lesson.classIndex) {
         if (colors[data.lesson.classIndex]) {
             color = colors[data.lesson.classIndex];
+            console.log(color);
         }
     }
 
@@ -133,9 +133,11 @@ const insertContentIntoCell = (cell, center, bottomLeft, bottomRight, top, color
     // cell`s background
     if (color) {
         cell.style.backgroundColor = color;
+        cell.style.color = '000';
     } else {
         let last = colors.length;
         cell.style.backgroundColor = colors[(last-1)];
+        cell.style.color = '000';
     }
 
     // flexbox-center

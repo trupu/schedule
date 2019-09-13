@@ -19,16 +19,16 @@
     table{
         border-collapse: collapse;
         border: 1px solid #000;
-        background-color: #fff;
+        background-color: rgba(0,0,0,.5);
 
         tr{
             td{
                 border: 1px solid #000;
                 min-width: 100px;
                 height: 40px;
-                background-color: #fff;
+                background-color: rgba(0,0,0,.8);
                 font-size: 16px;
-                color: #000;
+                color: #fff;
                 position: relative;
 
                 .flexbox-wrapper{
@@ -85,6 +85,41 @@
                         left: 0;
                         font-size: .6em;
                     }
+                }
+            }
+            .huge-cell{
+                height: 80px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .table-wrapper{
+        table{
+            tr{
+                td{
+                    min-width: 80px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .table-wrapper{
+        table{
+            tr{
+                td{
+                    height: 25px;
+                    min-width: 60px;
+                    font-size: 10px;
+                }
+                .huge-cell{
+                    height: 50px;
+                }
+                .column1{
+                    width: 40px;
                 }
             }
         }

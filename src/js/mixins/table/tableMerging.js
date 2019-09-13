@@ -1,4 +1,19 @@
-const merge = () => {
+const checkValues = (x, y, full) => {
+    if (full) {
+        if (x.innerHTML !== '' && y.innerHTML === '') {
+            return true;
+        }
+        if (x.innerHTML === '' && y.innerHTML !== '') {
+            return true;
+        }
+    }
+    if (x.innerHTML === y.innerHTML) {
+        return true;
+    }
+    return false;
+}
+
+const mergeRows = () => {
     const rows = document.querySelectorAll('tr');
     const rowsArray = Array.from(rows);
 
@@ -7,35 +22,39 @@ const merge = () => {
     let colValue;
     let pivot;
 
-    rowsArray.forEach( el => {
-        console.log(el);
-        colIndex = [];
-        colValue = [];
-        counter = 2;
-        pivot = 0;
-        for (let i = 0; i < el.children.length; i++) {
-            if (el.children[i+1]) {
-                if (el.children[i].innerHTML === el.children[i+1].innerHTML) {
-                    if (!colIndex[pivot]) {
-                        colIndex[pivot] = i;
-                        colValue[pivot] = counter;
-                        counter++;
-                        pivot++;
-                    } else {
-                        colValue[pivot]++;
-                    }
+    for (let i = 0; i < (rowsArray.length-1); i=i+2) {
+        
+        let rc = rowsArray[i].children;
+        let rc2 = rowsArray[i+1].children;
+        let array = Array.from(rc);
+        let array2 = Array.from(rc2);
+
+        array.forEach((td, index) => {
+            let x = td.querySelector('.flexbox-center');
+            let y = array2[index].querySelector('.flexbox-center');
+
+            let s = td.querySelector('.flexbox-top');
+            let t = array2[index].querySelector('.flexbox-top');
+
+            let check = checkValues(x, y, true);
+            let secondCheck = checkValues(s, t);
+
+            if (check && secondCheck) {
+                if (x.innerHTML === '') {
+                    td.innerHTML = array2[index].innerHTML;
+                    td.style.backgroundColor = array2[index].style.backgroundColor;
+                    td.style.color = array2[index].style.color;
+                    td.setAttribute('rowspan', 2);
+                    array2[index].style.display = 'none';
+                } else {
+                    td.setAttribute('rowspan', 2);
+                    array2[index].style.display = 'none';
                 }
-            } else {
-                colIndex.forEach((sub, index) => {
-                    for (let j = 0; j < (colValue[index]-1); j++) {
-                        
-                    }
-                    el.children[sub].setAttribute('colspan', colValue[index]);
-                });
+                td.classList.add('huge-cell');
             }
-        }
-    });
+        });
+    }
 
 }
 
-export default merge;
+export default { mergeRows };

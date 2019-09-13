@@ -19,7 +19,8 @@ const colors = [
     'B3A15B',
     'C8FF4F',
     'FF915B',
-    'FF9B0F'
+    'FF9B0F',
+    'ABCDEF'
 ];
 
 export default colors;
