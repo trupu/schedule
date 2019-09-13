@@ -78,12 +78,12 @@
         user-select: none;
         width: 200px;
         height: 50px;
-        background-color: rgba(0,0,0,.9);
+        background-color: $selectorBackgroundColor;
         border: none;
-        border: 2px solid darken($text-color, 20%);
+        border: 2px solid $selectorNormal;
         text-align: center;
         font-size: 1.5em;
-        color: darken($text-color, 20%);
+        color: $selectorNormal;
         text-shadow: 2px 2px 5px #000;
         position: relative;
         transition: color .3s ease-in-out, transform .5s ease-in-out;
@@ -93,7 +93,7 @@
             position: absolute;
             height: 2px;
             width: 0;
-            background-color: #FFA20A;
+            background-color: $selectorHoverEffect;
             transition: all .3s ease-in-out;
         }
 
@@ -110,7 +110,7 @@
         &:hover{
             background-color: rgba(0,0,0,.8);
             cursor: pointer;
-            color: #FFA20A;
+            color: $selectorHoverEffect;
 
             &::before, &::after{
                 width: 100%;
@@ -141,7 +141,7 @@
                 position: absolute;
                 height: 0;
                 width: 2px;
-                background-color: #FFA20A;
+                background-color: $selectorHoverEffect;
                 transition: all .3s ease-in-out;
             }
 
@@ -203,7 +203,6 @@
             list-style-type: none;
             width: 400px;
             height: 300px;
-            color: #fff;
             align-items: flex-start;
             justify-content: flex-start;
             overflow: hidden;
@@ -221,13 +220,13 @@
                 
                 li{
                     animation: showListItems .5s ease-in-out both;
-                    color: rgb(218, 147, 17);
+                    color: $selectorHoverEffect;
                     transition: all .3s ease-in-out;
                     font-size: .6em;
                     line-height: 1.5;
 
                     &:hover{
-                        color: lighten(rgb(218, 147, 17), 20%);
+                        color: lighten($selectorHoverEffect, 20%);
                         background-color: rgba(255,255,255,.05);
                     }
                 }

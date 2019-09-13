@@ -1,6 +1,3 @@
-$text-color: #E84527;
-$light-text-color: #FFDCA8;
-
 .header{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -26,7 +23,7 @@ $light-text-color: #FFDCA8;
 
             cursor: pointer;
             transform: scale(1.1);
-            color: darken($text-color, 25%);
+            color: $darkenTextColor;
         }
 
         i{
@@ -40,7 +37,7 @@ $light-text-color: #FFDCA8;
 
     .header_option-active{
         transform: scale(1.1);
-        color: darken($text-color, 25%);
+        color: $darkenTextColor;
     }
 }
 

@@ -1,0 +1,22 @@
+/* MAIN */ 
+
+$backgroundColor: linear-gradient(-45deg, #CC641B, rgba(255,157,49,.8));
+
+/* TABLE */
+
+$titleColor: #000;
+$tableBackgroundColor: rgba(0,0,0,.5);
+$rowBackgroundColor: rgba(0,0,0,.8);
+$cellTextColor: #fff; /* This variable changes only the pregenerated cells` text color (you are able to change generated cells` color in tableContent.js file)*/
+
+/* HEADER */
+
+$text-color: #E84527;
+$light-text-color: #FFDCA8;
+$darkenTextColor: darken($text-color, 25%);
+
+/* SELECTOR */
+
+$selectorBackgroundColor: rgba(0,0,0,.9);
+$selectorNormal: darken($text-color, 20%);
+$selectorHoverEffect: #FFA20A;

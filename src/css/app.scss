@@ -1,3 +1,5 @@
+@import './colors.scss';
+@import './loading/loading.scss';
 @import './header/header.scss';
 @import './selector/selector.scss';
 @import './table/table.scss';
@@ -9,7 +11,7 @@
 }
 
 body{
-    background-image: linear-gradient(-45deg, #CC641B, rgba(255,157,49,.8));
+    background-image: $backgroundColor;
     background-attachment: fixed;
     font-size: 20px;
     color: #fff;

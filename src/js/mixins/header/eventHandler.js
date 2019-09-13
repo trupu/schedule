@@ -3,6 +3,34 @@ import librus from '../../data/librusData';
 import clearContent from '../table/clearContent';
 import contentLoader from '../table/tableContent';
 
+const generateRandom = (xmlDOM) => {
+    const el = event.target;
+    const ev = el.closest('.header_option');
+    const div = document.querySelector('.hidden-scroll');
+    const array = Array.from(div.children);
+
+    if (array) {
+        let random = Math.floor((Math.random() * array.length) + 1);
+        if (array[random]) {
+            clearContent.clearTableContent().then(() => {
+                let name = ev.attributes['data-name'].value;
+                let id = array[random].attributes['data-id'].value;
+                selectorEvent(xmlDOM, name, array[random].innerHTML, id);
+            });
+        } else {
+            if (array[0]) {
+                clearContent.clearTableContent().then(() => {
+                    let name = ev.attributes['data-name'].value;
+                    let id = array[0].attributes['data-id'].value;
+                    selectorEvent(xmlDOM, name, array[0].innerHTML, id);
+                });
+            }
+        }
+    } else {
+        console.log('Błąd w generowaniu listy!');
+    }
+}
+
 // Implementing event('click') handler for header menu
 
 const headerEvent = (xmlDOM) => {
@@ -71,4 +99,4 @@ const selectorEvent = (xmlDOM, parent, fullname, id) => {
     }
 }
 
-export default {headerEvent, selectorEvent};
+export default {headerEvent, selectorEvent, generateRandom};
