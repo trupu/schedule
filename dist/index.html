@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Lekcji</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Special+Elite&display=swap" rel="stylesheet">
+<link href="main.css" rel="stylesheet"></head>
+<body>
+    <div class="container">
+        <section class="header">
+            <div class="header_option" data-name='classes' data-title='Wybierz Klasę'>
+                <i class="fas fa-users"></i>
+                <span class='selector-data-name'>Klasy</span>
+            </div>
+            <div class="header_option" data-name='teachers' data-title='Wybierz Nauczyciela'>
+                <i class="fas fa-user-graduate"></i>
+                <span class='selector-data-name'>Nauczyciele</span>
+            </div>
+            <div class="header_option" data-name='classrooms' data-title='Wybierz Salę'>
+                <i class="fas fa-home"></i>
+                <span class='selector-data-name'>Sale</span>
+            </div>
+            <div class="header_option" data-name='subjects' data-title='Wybierz Przedmiot'>
+                <i class="fas fa-book"></i>
+                <span class='selector-data-name'>Przedmioty</span>
+            </div>
+        </section>
+        <section class="selector-wrapper">
+
+            <div class="selector-shadow-box"></div>
+
+            <label class="select-label">Plan Lekcji</label>
+			<div class="cs-select">
+                <span class="selector-title">
+                    <span class='selector-title_content'>Piątka :)</span>
+                    <i class='fas fa-angle-double-right'></i>
+                </span>
+                <ul class="selector-list">
+                    <div class="hidden-scroll">
+                    </div>
+                </ul>
+            </div>
+        </section>
+        <section class="table-wrapper">
+            <span class="schedule-title">Plan lekcji</span>
+        </section>
+        <section class="preloading">
+            <p class="title">Plan lekcji</p>
+            <p class="subtitle">ZSP5 Kożuchów</p>
+            <div class="anim-wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </section>
+        <section class='resolution-alert'>
+            <p class="alert">
+                <i class='fas fa-exclamation'></i>
+                Szerokość okna twojej przeglądarki jest niewystarczająca, aby poprawnie wyświetlić plan lekcji!
+            </p>
+            <p class="alert">
+                Jeśli korzystasz z telefonu lub tabletu spróbuj obrócić urządzenie. Jeśli z komputera - poszerz okno przeglądarki :)
+            </p>
+            <p class="alert">
+                Dostępna jest mobilna wersja planu.
+                <a href="#">Pobierz</a>
+            </p>
+        </section>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/e9724ea0ac.js"></script>
+<script type="text/javascript" src="app.bundle.js"></script></body>
+</html>

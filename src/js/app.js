@@ -13,11 +13,6 @@ const shadowBox = document.querySelector('.selector-shadow-box');
 selector.addEventListener('click', Selector.showSelector);
 shadowBox.addEventListener('click', Selector.hideSelector);
 
-selector.addEventListener('click', function() {
-    const ev = selector.querySelector('.hidden-scroll');
-    console.log(selector);
-});
-
 // adding event listener for 'esc' button to handle shadowBox(list overlay) hiding
 
 window.onkeydown = function( event ) {
