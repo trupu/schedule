@@ -38,12 +38,20 @@ const headerEvent = (xmlDOM) => {
     const active = document.querySelector('.header_option-active');
     if (active) active.classList.remove('header_option-active');
 
-    if (event.target instanceof HTMLElement) {
-        const ev = event.target.closest('.header_option');
-        ev.classList.add('header_option-active');
-        name = ev.attributes['data-name'].value;
-        dataName = ev.querySelector('.selector-data-name').innerHTML;
-        dataContent = ev.attributes['data-title'].value;
+    if (event) {
+        if (event.target instanceof HTMLElement) {
+            const ev = event.target.closest('.header_option');
+            ev.classList.add('header_option-active');
+            name = ev.attributes['data-name'].value;
+            dataName = ev.querySelector('.selector-data-name').innerHTML;
+            dataContent = ev.attributes['data-title'].value;
+        } else {
+            const ev = document.querySelector('.header_option');
+            ev.classList.add('header_option-active');
+            name = document.querySelector('.header_option').attributes['data-name'].value;
+            dataName = ev.querySelector('.selector-data-name').innerHTML;
+            dataContent = ev.attributes['data-title'].value;
+        }
     } else {
         const ev = document.querySelector('.header_option');
         ev.classList.add('header_option-active');

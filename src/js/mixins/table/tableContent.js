@@ -134,12 +134,14 @@ const validateTarget = (classid, cell, data) => {
 const insertContentIntoCell = (cell, center, bottomLeft, bottomRight, top, color) => {
     // cell`s background
     if (color) {
-        cell.style.backgroundColor = color;
-        cell.style.color = '000';
+        let cw = cell.querySelector('.flexbox-wrapper');
+        cw.style.backgroundColor = color;
+        cw.style.color = '000';
     } else {
+        let cw = cell.querySelector('.flexbox-wrapper');
         let last = colors.length;
-        cell.style.backgroundColor = colors[(last-1)];
-        cell.style.color = '000';
+        cw.style.backgroundColor = colors[(last-1)];
+        cw.style.color = '000';
     }
 
     // flexbox-center
